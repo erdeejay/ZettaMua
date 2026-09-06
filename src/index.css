@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --pink: #ffafcc;
+    --crimson: #d80032;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el header sticky al navegar por anclas */
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    @apply bg-pink-light font-sans text-crimson-deep;
+    margin: 0;
+  }
+
+  ::selection {
+    background: var(--crimson);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Micro-tipografía técnica de esquinas */
+  .tech-label {
+    @apply font-sans text-[10px] font-semibold uppercase tracking-micro sm:text-xs;
+  }
+
+  /* Línea divisoria fina carmesí */
+  .hairline {
+    @apply h-px w-full bg-crimson/70;
+  }
+
+  /* Contenedor central editorial */
+  .editorial-container {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Título de sección grande estilo poster */
+  .section-index {
+    @apply font-display text-[13vw] font-extrabold uppercase leading-[0.85] tracking-tightest sm:text-[9vw] lg:text-[7rem];
+  }
+
+  /* Efecto hover para imágenes de galería */
+  .gallery-media {
+    @apply relative overflow-hidden bg-crimson/10;
+  }
+  .gallery-media img {
+    @apply h-full w-full object-cover transition-all duration-700 ease-out will-change-transform;
+  }
+  .gallery-media:hover img {
+    @apply scale-[1.06] brightness-105;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

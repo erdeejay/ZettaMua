@@ -8,9 +8,12 @@ export default function Testimonials() {
       <div className="editorial-container">
         {/* Encabezado tipográfico gigante */}
         <Reveal className="text-center">
-          <h2 className="font-display text-[13vw] font-extrabold uppercase leading-[0.85] tracking-tightest sm:text-[11vw] lg:text-[8rem]">
+          <h2
+            style={{ fontSize: "clamp(2.5rem, 11vw, 8rem)" }}
+            className="break-words font-display font-extrabold uppercase leading-[0.85] tracking-tightest"
+          >
             <span className="block text-pink-soft">Clientes</span>
-            <span className="-mt-[2vw] block text-white lg:-mt-4">felices</span>
+            <span className="block text-white">felices</span>
           </h2>
         </Reveal>
 

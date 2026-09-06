@@ -58,9 +58,14 @@
     @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
   }
 
-  /* Título de sección grande estilo poster */
+  /* Título de sección grande estilo poster.
+     clamp fluido con tope, y ajuste de palabra para no desbordar nunca. */
   .section-index {
-    @apply font-display text-[11vw] font-extrabold uppercase leading-[0.88] tracking-tightest sm:text-[8vw] lg:text-[6.5rem];
+    @apply font-display font-extrabold uppercase leading-[0.9] tracking-tightest;
+    font-size: clamp(2.25rem, 9vw, 6.5rem);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   /* Efecto hover para imágenes de galería */

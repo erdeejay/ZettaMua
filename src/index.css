@@ -17,11 +17,23 @@
     scroll-behavior: smooth;
     /* Compensa el header sticky al navegar por anclas */
     scroll-padding-top: 72px;
+    /* Evita scroll horizontal por títulos grandes en vw */
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-pink-light font-sans text-crimson-deep;
     margin: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ninguna imagen o media debe forzar ancho extra */
+  img,
+  svg,
+  video {
+    max-width: 100%;
   }
 
   ::selection {

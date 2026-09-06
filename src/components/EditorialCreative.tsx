@@ -19,7 +19,7 @@ export default function EditorialCreative() {
 
         {/* Tipografía central gigante */}
         <Reveal className="py-14 text-center sm:py-20">
-          <h2 className="font-display text-[15vw] font-extrabold uppercase leading-[0.82] tracking-tightest sm:text-[12vw] lg:text-[9rem]">
+          <h2 className="font-display text-[11vw] font-extrabold uppercase leading-[0.85] tracking-tightest sm:text-[10vw] lg:text-[8rem]">
             <span className="block text-white">Editorial &amp;</span>
             <span className="block text-pink-soft">Creative</span>
           </h2>

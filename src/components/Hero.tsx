@@ -38,7 +38,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[24vw] font-extrabold uppercase leading-[0.8] tracking-tightest text-white drop-shadow-[0_2px_0_rgba(216,0,50,0.25)] sm:text-[20vw] lg:text-[15rem]"
+            className="font-display text-[19vw] font-extrabold uppercase leading-[0.82] tracking-tightest text-white drop-shadow-[0_2px_0_rgba(216,0,50,0.25)] sm:text-[18vw] lg:text-[13rem]"
           >
             ZETTTA
           </motion.h1>
@@ -46,7 +46,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="-mt-[6vw] block font-display text-[26vw] font-extrabold uppercase leading-[0.8] tracking-tightest text-crimson sm:-mt-[5vw] sm:text-[22vw] lg:-mt-16 lg:text-[17rem]"
+            className="-mt-[4vw] block font-display text-[19vw] font-extrabold uppercase leading-[0.82] tracking-tightest text-crimson sm:-mt-[3vw] sm:text-[18vw] lg:-mt-12 lg:text-[13rem]"
           >
             MUA
           </motion.span>

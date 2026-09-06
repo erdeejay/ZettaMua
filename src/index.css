@@ -60,7 +60,7 @@
 
   /* Título de sección grande estilo poster */
   .section-index {
-    @apply font-display text-[13vw] font-extrabold uppercase leading-[0.85] tracking-tightest sm:text-[9vw] lg:text-[7rem];
+    @apply font-display text-[11vw] font-extrabold uppercase leading-[0.88] tracking-tightest sm:text-[8vw] lg:text-[6.5rem];
   }
 
   /* Efecto hover para imágenes de galería */

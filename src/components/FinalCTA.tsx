@@ -8,7 +8,7 @@ export default function FinalCTA() {
       <div className="editorial-container py-24 sm:py-32">
         {/* Titular two-tone a pantalla completa */}
         <Reveal className="text-center">
-          <h2 className="font-display text-[13vw] font-extrabold uppercase leading-[0.85] tracking-tightest sm:text-[10vw] lg:text-[7.5rem]">
+          <h2 className="font-display text-[10vw] font-extrabold uppercase leading-[0.9] tracking-tightest sm:text-[8vw] lg:text-[6.5rem]">
             <span className="block text-white drop-shadow-[0_2px_0_rgba(216,0,50,0.2)]">
               Hagamos realidad
             </span>

@@ -39,13 +39,6 @@
     background: var(--red);
     color: var(--white);
   }
-
-  /* Cursor personalizado: ocultar el nativo en desktop */
-  @media (hover: hover) and (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
-  }
 }
 
 @layer components {
@@ -112,18 +105,22 @@
   .vertical-rl {
     writing-mode: vertical-rl;
   }
-  /* Efecto offset print: capa roja desplazada tras el texto blanco */
+  /* Efecto offset print: capa roja ligeramente desplazada tras el texto
+     blanco. Desplazamiento pequeño y fijo (error de registro sutil). */
   .offset-print {
     position: relative;
+    isolation: isolate;
   }
   .offset-print[data-text]::before {
     content: attr(data-text);
     position: absolute;
     left: 0;
     top: 0;
+    width: 100%;
     color: var(--red);
-    transform: translate(0.06em, 0.05em);
+    transform: translate(6px, 5px);
     z-index: -1;
+    pointer-events: none;
   }
   /* Grain sutil, muy leve, sobre rosa */
   .grain::after {

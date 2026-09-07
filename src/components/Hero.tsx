@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden py-8 sm:min-h-[calc(100svh-4rem)]"
+      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden bg-pink-pale py-8 sm:min-h-[calc(100svh-4rem)]"
     >
       {/* Marquee superior sutil */}
       <div className="pointer-events-none select-none overflow-hidden">
@@ -67,7 +67,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="h-auto w-full max-w-[1100px] object-contain"
+            className="mt-2 h-auto w-full max-w-[820px] object-contain px-4"
           />
         )}
       </div>

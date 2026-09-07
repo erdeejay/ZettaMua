@@ -4,9 +4,8 @@
 
 @layer base {
   :root {
-    --ink: #0a0a0a;
-    --bone: #edeae3;
-    --blood: #8e0e1e;
+    --pink: #ffafcc;
+    --crimson: #d80032;
   }
 
   * {
@@ -16,19 +15,21 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 88px;
+    /* Compensa el header sticky al navegar por anclas */
+    scroll-padding-top: 72px;
+    /* Evita scroll horizontal por títulos grandes en vw */
     overflow-x: hidden;
-    background: var(--ink);
   }
 
   body {
-    @apply bg-ink font-sans text-bone;
+    @apply bg-pink-light font-sans text-crimson-deep;
     margin: 0;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
 
+  /* Ninguna imagen o media debe forzar ancho extra */
   img,
   svg,
   video {
@@ -36,68 +37,46 @@
   }
 
   ::selection {
-    background: var(--blood);
-    color: var(--bone);
-  }
-
-  /* Cursor personalizado: ocultar el nativo en desktop con puntero fino */
-  @media (hover: hover) and (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
+    background: var(--crimson);
+    color: #fff;
   }
 }
 
 @layer components {
-  /* Metadatos monoespaciados */
-  .meta {
-    @apply font-mono text-[10px] uppercase tracking-micro text-ash sm:text-[11px];
-  }
-  .meta-bone {
-    @apply font-mono text-[10px] uppercase tracking-micro text-bone/70 sm:text-[11px];
+  /* Micro-tipografía técnica de esquinas */
+  .tech-label {
+    @apply font-sans text-[10px] font-semibold uppercase tracking-micro sm:text-xs;
   }
 
-  /* Línea divisoria fina */
-  .rule {
-    @apply h-px w-full bg-bone/15;
-  }
-  .rule-blood {
-    @apply h-px w-full bg-blood-bright/60;
+  /* Línea divisoria fina carmesí */
+  .hairline {
+    @apply h-px w-full bg-crimson/70;
   }
 
-  /* Contenedor editorial ancho */
-  .atelier {
-    @apply mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12;
+  /* Contenedor central editorial */
+  .editorial-container {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
   }
 
-  /* Display gigante fluido que nunca desborda */
-  .display-xl {
-    @apply font-display uppercase leading-[0.82] tracking-tightest;
-    font-size: clamp(3rem, 20vw, 24rem);
+  /* Título de sección grande estilo poster.
+     clamp fluido con tope, y ajuste de palabra para no desbordar nunca. */
+  .section-index {
+    @apply font-display font-extrabold uppercase leading-[0.9] tracking-tightest;
+    font-size: clamp(2.25rem, 9vw, 6.5rem);
     overflow-wrap: break-word;
-  }
-  .display-lg {
-    @apply font-display uppercase leading-[0.85] tracking-tightest;
-    font-size: clamp(2.5rem, 12vw, 11rem);
-    overflow-wrap: break-word;
-  }
-  .display-md {
-    @apply font-display uppercase leading-[0.88] tracking-tightest;
-    font-size: clamp(2rem, 8vw, 6rem);
-    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 
-  /* Hover de media editorial */
-  .media {
-    @apply relative overflow-hidden bg-smoke;
+  /* Efecto hover para imágenes de galería */
+  .gallery-media {
+    @apply relative overflow-hidden bg-crimson/10;
   }
-  .media img {
-    @apply h-full w-full object-cover will-change-transform;
-    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 500ms ease;
+  .gallery-media img {
+    @apply h-full w-full object-cover transition-all duration-700 ease-out will-change-transform;
   }
-  .group:hover .media img {
-    @apply scale-[1.04];
+  .gallery-media:hover img {
+    @apply scale-[1.06] brightness-105;
   }
 }
 
@@ -111,22 +90,5 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-  /* Texto vertical para etiquetas laterales */
-  .vertical-rl {
-    writing-mode: vertical-rl;
-  }
-  /* Grain / ruido muy sutil superpuesto */
-  .grain::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .mix-difference {
-    mix-blend-mode: difference;
   }
 }

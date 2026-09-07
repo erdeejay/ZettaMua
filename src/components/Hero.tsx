@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { logoUrl } from "@/data/portfolio";
 
 export default function Hero() {
+  const [logoError, setLogoError] = useState(false);
+
   return (
     <section
       id="inicio"
@@ -33,26 +37,39 @@ export default function Hero() {
           MAKEUP ARTIST · HAIR STYLIST · GRANADA
         </motion.p>
 
-        <div className="relative">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: "clamp(3.5rem, 17vw, 12rem)" }}
-            className="block font-display font-extrabold uppercase leading-[0.82] tracking-tightest text-white drop-shadow-[0_2px_0_rgba(216,0,50,0.25)]"
-          >
-            ZETTTA
-          </motion.h1>
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: "clamp(3.5rem, 17vw, 12rem)" }}
-            className="-mt-[3vw] block font-display font-extrabold uppercase leading-[0.82] tracking-tightest text-crimson lg:-mt-10"
-          >
-            MUA
-          </motion.span>
-        </div>
+        {logoError ? (
+          // Fallback tipográfico si el logo no carga
+          <div className="relative">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              style={{ fontSize: "clamp(3.5rem, 17vw, 12rem)" }}
+              className="block font-display font-extrabold uppercase leading-[0.82] tracking-tightest text-white drop-shadow-[0_2px_0_rgba(216,0,50,0.25)]"
+            >
+              ZETTTA
+            </motion.h1>
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              style={{ fontSize: "clamp(3.5rem, 17vw, 12rem)" }}
+              className="-mt-[3vw] block font-display font-extrabold uppercase leading-[0.82] tracking-tightest text-crimson lg:-mt-10"
+            >
+              MUA
+            </motion.span>
+          </div>
+        ) : (
+          <motion.img
+            src={logoUrl}
+            alt="ZETTTA MUA"
+            onError={() => setLogoError(true)}
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="h-auto w-full max-w-[1100px] object-contain"
+          />
+        )}
       </div>
 
       {/* Pie del hero */}

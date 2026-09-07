@@ -128,6 +128,10 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
+// Logo de la marca (imagen). Si falla la carga, la UI cae al texto.
+export const logoUrl =
+  "https://r2.fivemanage.com/0CLR2LmxGE4gkAoy8AlNA/Diseosinttulo(10).png";
+
 // Contacto / redes (usado por el CTA final y el footer)
 export const contact = {
   instagram: "https://instagram.com/zettta_mua",

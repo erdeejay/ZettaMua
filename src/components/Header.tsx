@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { navItems } from "@/data/portfolio";
+import { navItems, logoUrl } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -26,15 +27,24 @@ export default function Header() {
           {/* Izquierda: portfolio */}
           <span className="tech-label text-crimson">PORTFOLIO 2026/27</span>
 
-          {/* Centro: marca corta */}
+          {/* Centro: logo de la marca (con fallback a texto) */}
           <button
-            onClick={() =>
-              window.scrollTo({ top: 0, behavior: "smooth" })
-            }
-            className="font-display text-lg font-extrabold uppercase tracking-tightest text-crimson sm:text-xl"
-            aria-label="Ir al inicio"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center justify-center"
+            aria-label="ZETTTA MUA — Ir al inicio"
           >
-            ZETTTA<span className="text-white">·</span>MUA
+            {logoError ? (
+              <span className="font-display text-lg font-extrabold uppercase tracking-tightest text-crimson sm:text-xl">
+                ZETTTA<span className="text-white">·</span>MUA
+              </span>
+            ) : (
+              <img
+                src={logoUrl}
+                alt="ZETTTA MUA"
+                onError={() => setLogoError(true)}
+                className="h-9 w-auto object-contain sm:h-11"
+              />
+            )}
           </button>
 
           {/* Derecha: disciplina (desktop) + toggle menú */}

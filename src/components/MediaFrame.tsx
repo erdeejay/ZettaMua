@@ -3,56 +3,46 @@ import { cn } from "@/lib/utils";
 
 type MediaFrameProps = {
   src?: string;
-  hoverSrc?: string;
   alt: string;
-  code?: string;
+  label?: string;
   className?: string;
+  imgClassName?: string;
 };
 
 /**
- * Marco de imagen editorial. Soporta segunda imagen para hover (crossfade).
- * Si no hay imagen real, muestra un placeholder clínico oscuro con metadato,
- * manteniendo la maquetación intacta.
+ * Marco de imagen editorial con hover (zoom + brillo sutil).
+ * Si la imagen real no existe todavía, muestra un placeholder limpio con el
+ * texto indicado, manteniendo la maquetación intacta.
  */
 export default function MediaFrame({
   src,
-  hoverSrc,
   alt,
-  code,
+  label,
   className,
+  imgClassName,
 }: MediaFrameProps) {
   const [errored, setErrored] = useState(false);
-  const [hoverErrored, setHoverErrored] = useState(false);
   const showPlaceholder = !src || errored;
 
   return (
-    <div className={cn("media h-full w-full", className)}>
+    <div className={cn("gallery-media h-full w-full", className)}>
       {showPlaceholder ? (
-        <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-red/15 p-6 text-center">
-          <span className="font-display text-4xl uppercase tracking-tightest text-red/25">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-pink-soft via-pink-pale to-white p-6 text-center">
+          <span className="font-display text-3xl font-extrabold uppercase tracking-tightest text-crimson/30">
             ZETTTA
           </span>
-          <span className="meta text-red/60">{code ?? alt}</span>
+          <span className="tech-label text-crimson/50">
+            {label ?? alt}
+          </span>
         </div>
       ) : (
-        <>
-          <img
-            src={src}
-            alt={alt}
-            loading="lazy"
-            onError={() => setErrored(true)}
-          />
-          {hoverSrc && !hoverErrored && (
-            <img
-              src={hoverSrc}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              onError={() => setHoverErrored(true)}
-              className="!absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
-          )}
-        </>
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          onError={() => setErrored(true)}
+          className={imgClassName}
+        />
       )}
     </div>
   );

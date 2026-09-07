@@ -4,8 +4,9 @@
 
 @layer base {
   :root {
-    --pink: #ffafcc;
-    --crimson: #d80032;
+    --pink: #fca5c6;
+    --red: #d80032;
+    --white: #ffffff;
   }
 
   * {
@@ -15,21 +16,19 @@
 
   html {
     scroll-behavior: smooth;
-    /* Compensa el header sticky al navegar por anclas */
-    scroll-padding-top: 72px;
-    /* Evita scroll horizontal por títulos grandes en vw */
+    scroll-padding-top: 88px;
     overflow-x: hidden;
+    background: var(--pink);
   }
 
   body {
-    @apply bg-pink-light font-sans text-crimson-deep;
+    @apply bg-pink font-sans text-red;
     margin: 0;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
 
-  /* Ninguna imagen o media debe forzar ancho extra */
   img,
   svg,
   video {
@@ -37,46 +36,65 @@
   }
 
   ::selection {
-    background: var(--crimson);
-    color: #fff;
+    background: var(--red);
+    color: var(--white);
+  }
+
+  /* Cursor personalizado: ocultar el nativo en desktop */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
   }
 }
 
 @layer components {
-  /* Micro-tipografía técnica de esquinas */
-  .tech-label {
-    @apply font-sans text-[10px] font-semibold uppercase tracking-micro sm:text-xs;
+  /* Metadatos monoespaciados (heredan color del contexto) */
+  .meta {
+    @apply font-mono text-[10px] uppercase tracking-micro sm:text-[11px];
   }
 
-  /* Línea divisoria fina carmesí */
-  .hairline {
-    @apply h-px w-full bg-crimson/70;
+  /* Líneas divisorias */
+  .rule {
+    @apply h-px w-full bg-current opacity-25;
+  }
+  .rule-red {
+    @apply h-px w-full bg-red;
   }
 
-  /* Contenedor central editorial */
-  .editorial-container {
-    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  /* Contenedor editorial */
+  .atelier {
+    @apply mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12;
   }
 
-  /* Título de sección grande estilo poster.
-     clamp fluido con tope, y ajuste de palabra para no desbordar nunca. */
-  .section-index {
-    @apply font-display font-extrabold uppercase leading-[0.9] tracking-tightest;
-    font-size: clamp(2.25rem, 9vw, 6.5rem);
+  /* Display gigante fluido (nunca desborda) */
+  .display-xl {
+    @apply font-display uppercase leading-[0.82] tracking-tightest;
+    font-size: clamp(3rem, 20vw, 24rem);
     overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
+  }
+  .display-lg {
+    @apply font-display uppercase leading-[0.85] tracking-tightest;
+    font-size: clamp(2.5rem, 12vw, 11rem);
+    overflow-wrap: break-word;
+  }
+  .display-md {
+    @apply font-display uppercase leading-[0.88] tracking-tightest;
+    font-size: clamp(2rem, 8vw, 6rem);
+    overflow-wrap: break-word;
   }
 
-  /* Efecto hover para imágenes de galería */
-  .gallery-media {
-    @apply relative overflow-hidden bg-crimson/10;
+  /* Media editorial con hover */
+  .media {
+    @apply relative overflow-hidden bg-red/10;
   }
-  .gallery-media img {
-    @apply h-full w-full object-cover transition-all duration-700 ease-out will-change-transform;
+  .media img {
+    @apply h-full w-full object-cover will-change-transform;
+    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 500ms ease;
   }
-  .gallery-media:hover img {
-    @apply scale-[1.06] brightness-105;
+  .group:hover .media img {
+    @apply scale-[1.04];
   }
 }
 
@@ -90,5 +108,32 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  .vertical-rl {
+    writing-mode: vertical-rl;
+  }
+  /* Efecto offset print: capa roja desplazada tras el texto blanco */
+  .offset-print {
+    position: relative;
+  }
+  .offset-print[data-text]::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--red);
+    transform: translate(0.06em, 0.05em);
+    z-index: -1;
+  }
+  /* Grain sutil, muy leve, sobre rosa */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

@@ -1,68 +1,98 @@
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { microcopy } from "@/data/portfolio";
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const onMove = (e: React.MouseEvent) => {
+    const nx = (e.clientX / window.innerWidth - 0.5) * 2;
+    const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+    setTilt({ x: nx * 12, y: ny * 6 });
+  };
+
   return (
     <section
-      id="inicio"
-      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden py-8 sm:min-h-[calc(100svh-4rem)]"
+      ref={ref}
+      id="top"
+      onMouseMove={onMove}
+      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden bg-pink pb-8 pt-[72px] text-red"
     >
-      {/* Marquee superior sutil */}
-      <div className="pointer-events-none select-none overflow-hidden">
+      {/* Cabecera de identidad conservada */}
+      <div className="atelier">
+        <div className="rule-red mb-3 mt-2" />
+        <div className="grid grid-cols-3 items-center">
+          <span className="meta text-red">PORTFOLIO 2026/27</span>
+          <span className="text-center font-display text-lg uppercase tracking-tightest text-red sm:text-xl">
+            ZETTTA<span className="text-white">.</span>MUA
+          </span>
+          <span className="meta text-right text-red">HAIR — MAKEUP — STYLING</span>
+        </div>
+        <div className="rule-red mt-3" />
+      </div>
+
+      {/* Marquee */}
+      <div className="pointer-events-none select-none overflow-hidden py-4">
         <div className="flex w-max animate-marquee whitespace-nowrap">
           {Array.from({ length: 2 }).map((_, i) => (
-            <span
-              key={i}
-              className="tech-label px-4 text-crimson/70"
-              aria-hidden={i === 1}
-            >
-              HAIR — MAKEUP — STYLING — BRAIDS — EDITORIAL — CREATIVE — HAIR —
-              MAKEUP — STYLING — BRAIDS — EDITORIAL — CREATIVE —
+            <span key={i} className="meta px-3 text-red" aria-hidden={i === 1}>
+              EDITORIAL — CREATIVE — HAIR — MAKEUP — STYLING — BRANDS — EDITORIAL
+              — CREATIVE — HAIR — MAKEUP — STYLING — BRANDS —{" "}
             </span>
           ))}
         </div>
       </div>
 
-      {/* Composición tipográfica central */}
-      <div className="editorial-container flex flex-1 flex-col items-center justify-center text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="tech-label mb-6 text-crimson"
-        >
-          MAKEUP ARTIST · HAIR STYLIST · GRANADA
-        </motion.p>
+      {/* ZETTTA gigante con efecto offset print */}
+      <div className="atelier relative flex flex-1 items-center justify-center">
+        <span className="meta vertical-rl absolute left-0 top-1/2 hidden -translate-y-1/2 text-red/70 lg:block">
+          FACE / 003 · TEXTURE / 014
+        </span>
+        <span className="meta vertical-rl absolute right-0 top-1/2 hidden -translate-y-1/2 rotate-180 text-red/70 lg:block">
+          ARCHIVE / 2026
+        </span>
 
-        <div className="relative">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: "clamp(3.5rem, 17vw, 12rem)" }}
-            className="block font-display font-extrabold uppercase leading-[0.82] tracking-tightest text-white drop-shadow-[0_2px_0_rgba(216,0,50,0.25)]"
+        <motion.h1 style={{ y, scale, opacity }} className="relative w-full text-center">
+          <motion.span
+            animate={{ x: tilt.x, y: tilt.y }}
+            transition={{ type: "spring", stiffness: 60, damping: 20 }}
+            className="offset-print display-xl block text-white"
+            data-text="ZETTTA"
           >
             ZETTTA
-          </motion.h1>
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: "clamp(3.5rem, 17vw, 12rem)" }}
-            className="-mt-[3vw] block font-display font-extrabold uppercase leading-[0.82] tracking-tightest text-crimson lg:-mt-10"
-          >
-            MUA
           </motion.span>
-        </div>
+        </motion.h1>
       </div>
 
       {/* Pie del hero */}
-      <div className="editorial-container">
-        <div className="hairline mb-4" />
-        <div className="flex flex-col items-center justify-between gap-1 sm:flex-row">
-          <span className="tech-label text-crimson">@ZETTTA_MUA</span>
-          <span className="tech-label text-crimson-deep">
-            ZARA CABALLERO DÍAZ
-          </span>
+      <div className="atelier">
+        <div className="rule-red mb-4" />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="meta text-red">
+            MAKE-UP ARTIST · HAIR STYLIST
+            <br />
+            GRANADA — 2026
+          </div>
+          <div className="hidden justify-center sm:flex">
+            <span className="meta animate-flicker text-white">
+              {microcopy.tagline}
+            </span>
+          </div>
+          <div className="meta text-right text-red">
+            SCROLL ↓
+            <br />
+            001 — SELECTED WORK
+          </div>
         </div>
       </div>
     </section>

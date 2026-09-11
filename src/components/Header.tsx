@@ -22,21 +22,23 @@ export default function Header() {
       )}
     >
       <div className="editorial-container">
-        <div className="flex h-14 items-center justify-between gap-4 sm:h-16">
+        <div className="grid h-14 grid-cols-3 items-center gap-4 sm:h-16">
           {/* Izquierda: portfolio */}
-          <span className="tech-label text-crimson">PORTFOLIO 2026/27</span>
+          <span className="tech-label justify-self-start text-crimson">
+            PORTFOLIO 2026/27
+          </span>
 
-          {/* Centro: marca corta (el logo grande va en el hero) */}
+          {/* Centro: marca (centrada de verdad) */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="font-display text-lg font-extrabold uppercase tracking-tightest text-crimson sm:text-xl"
+            className="justify-self-center font-display text-lg font-extrabold uppercase tracking-tightest text-crimson sm:text-xl"
             aria-label="ZETTTA MUA — Ir al inicio"
           >
             ZETTTA<span className="text-white">·</span>MUA
           </button>
 
           {/* Derecha: disciplina (desktop) + toggle menú */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-end gap-4 justify-self-end">
             <span className="tech-label hidden text-crimson md:inline">
               HAIR — MAKEUP — STYLING
             </span>

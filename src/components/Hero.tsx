@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { logoUrl } from "@/data/portfolio";
+import { heroBannerUrl } from "@/data/portfolio";
 
 export default function Hero() {
   const [logoError, setLogoError] = useState(false);
@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden bg-pink-pale py-8 sm:min-h-[calc(100svh-4rem)]"
+      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden py-8 sm:min-h-[calc(100svh-4rem)]"
     >
       {/* Marquee superior sutil */}
       <div className="pointer-events-none select-none overflow-hidden">
@@ -61,13 +61,13 @@ export default function Hero() {
           </div>
         ) : (
           <motion.img
-            src={logoUrl}
+            src={heroBannerUrl}
             alt="ZETTTA MUA"
             onError={() => setLogoError(true)}
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2 h-auto w-full max-w-[820px] object-contain px-4"
+            className="mt-2 h-auto w-full max-w-[1000px] rounded-sm object-contain shadow-[0_10px_40px_-12px_rgba(216,0,50,0.35)]"
           />
         )}
       </div>

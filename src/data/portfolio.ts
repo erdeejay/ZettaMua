@@ -128,9 +128,13 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-// Logo de la marca (imagen). Si falla la carga, la UI cae al texto.
+// Logo de la marca (usado en cabecera/favicon).
 export const logoUrl =
   "https://r2.fivemanage.com/0CLR2LmxGE4gkAoy8AlNA/Diseosinttulo(10).png";
+
+// Banner principal del hero.
+export const heroBannerUrl =
+  "https://r2.fivemanage.com/imy11x1CiMPiSKU0A1IxD/Gemini_Generated_Image_6qvdnb6qvdnb6qvd.jpg";
 
 // Contacto / redes (usado por el CTA final y el footer)
 export const contact = {

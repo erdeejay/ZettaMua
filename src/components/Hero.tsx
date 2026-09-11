@@ -14,8 +14,9 @@ export default function Hero() {
           alt="ZETTTA MUA — maquillaje, peluquería y estilismo"
           className="h-full w-full object-cover"
         />
-        {/* Velo para legibilidad de los textos */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60" />
+        {/* Velo muy suave solo en los bordes (arriba/abajo) para los textos.
+            El centro queda transparente para que el banner luzca nítido. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/30" />
       </div>
 
       {/* Marquee superior sobre el banner */}

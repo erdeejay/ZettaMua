@@ -8,7 +8,7 @@ export default function Hero() {
       className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden py-8 sm:min-h-[calc(100svh-4rem)]"
     >
       {/* Fondo: banner a pantalla completa */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         <img
           src={heroBannerUrl}
           alt="ZETTTA MUA — maquillaje, peluquería y estilismo"
@@ -19,7 +19,7 @@ export default function Hero() {
       </div>
 
       {/* Marquee superior sobre el banner */}
-      <div className="pointer-events-none relative select-none overflow-hidden">
+      <div className="pointer-events-none relative z-10 select-none overflow-hidden">
         <div className="flex w-max animate-marquee whitespace-nowrap">
           {Array.from({ length: 2 }).map((_, i) => (
             <span
@@ -35,7 +35,7 @@ export default function Hero() {
       </div>
 
       {/* Contenido central sobre el banner */}
-      <div className="editorial-container relative flex flex-1 flex-col items-center justify-center text-center">
+      <div className="editorial-container relative z-10 flex flex-1 flex-col items-center justify-center text-center">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function Hero() {
       </div>
 
       {/* Pie del hero */}
-      <div className="editorial-container relative">
+      <div className="editorial-container relative z-10">
         <div className="mb-4 h-px w-full bg-white/40" />
         <div className="flex flex-col items-center justify-between gap-1 sm:flex-row">
           <span className="tech-label text-white">@ZETTTA_MUA</span>

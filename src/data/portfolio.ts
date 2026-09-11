@@ -134,7 +134,7 @@ export const logoUrl =
 
 // Banner principal del hero.
 export const heroBannerUrl =
-  "https://r2.fivemanage.com/imy11x1CiMPiSKU0A1IxD/Gemini_Generated_Image_6qvdnb6qvdnb6qvd.jpg";
+  "https://r2.fivemanage.com/imy11x1CiMPiSKU0A1IxD/Code_Generated_Image.png";
 
 // Contacto / redes (usado por el CTA final y el footer)
 export const contact = {

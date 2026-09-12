@@ -4,7 +4,6 @@ import Galeria from "./components/Galeria";
 import HairStyling from "./components/HairStyling";
 import Trenzas from "./components/Trenzas";
 import EditorialCreative from "./components/EditorialCreative";
-import Manifesto from "./components/Manifesto";
 import Team from "./components/Team";
 import CaseStudy from "./components/CaseStudy";
 import CaseStudyThree from "./components/CaseStudyThree";
@@ -20,7 +19,6 @@ export default function App() {
         <HairStyling />
         <Trenzas />
         <EditorialCreative />
-        <Manifesto />
         <Team />
         <CaseStudy />
         <CaseStudyThree />

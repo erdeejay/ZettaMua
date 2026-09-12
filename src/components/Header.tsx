@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Heart, X } from "lucide-react";
 import { navItems } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -23,10 +23,20 @@ export default function Header() {
     >
       <div className="editorial-container">
         <div className="grid h-14 grid-cols-3 items-center gap-4 sm:h-16">
-          {/* Izquierda: portfolio */}
-          <span className="tech-label justify-self-start text-crimson">
-            PORTFOLIO 2026/27
-          </span>
+          {/* Izquierda: botón índice con forma de corazón */}
+          <div className="flex items-center gap-3 justify-self-start">
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-full bg-crimson text-white transition-transform duration-300 hover:scale-105 active:scale-95"
+              aria-label={open ? "Cerrar índice" : "Abrir índice"}
+              aria-expanded={open}
+            >
+              {open ? <X size={18} /> : <Heart size={20} className="fill-white" />}
+            </button>
+            <span className="tech-label hidden text-crimson sm:inline">
+              {open ? "Cerrar" : "Índice"}
+            </span>
+          </div>
 
           {/* Centro: marca (centrada de verdad) */}
           <button
@@ -37,20 +47,10 @@ export default function Header() {
             ZETTTA<span className="text-white">·</span>MUA
           </button>
 
-          {/* Derecha: disciplina (desktop) + toggle menú */}
-          <div className="flex items-center justify-end gap-4 justify-self-end">
-            <span className="tech-label hidden text-crimson md:inline">
-              HAIR — MAKEUP — STYLING
-            </span>
-            <button
-              onClick={() => setOpen((v) => !v)}
-              className="grid h-9 w-9 place-items-center rounded-full border border-crimson/70 text-crimson transition-colors hover:bg-crimson hover:text-white"
-              aria-label={open ? "Cerrar menú" : "Abrir menú"}
-              aria-expanded={open}
-            >
-              {open ? <X size={18} /> : <Menu size={18} />}
-            </button>
-          </div>
+          {/* Derecha: metadatos */}
+          <span className="tech-label justify-self-end text-right text-crimson">
+            PORTFOLIO 2026/27
+          </span>
         </div>
       </div>
 

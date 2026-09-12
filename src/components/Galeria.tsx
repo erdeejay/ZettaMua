@@ -29,7 +29,7 @@ export default function Galeria() {
     <section id="galeria" className="scroll-mt-20 bg-pink-light py-16 sm:py-24">
       <div className="editorial-container">
         {/* Introducción */}
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <div className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center">
           <span className="tech-label text-crimson">Galería</span>
           <h2
             className="mt-3 font-display font-extrabold uppercase leading-[0.9] tracking-tightest text-crimson"

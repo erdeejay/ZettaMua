@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Galeria from "./components/Galeria";
 import About from "./components/About";
 import HairStyling from "./components/HairStyling";
 import Trenzas from "./components/Trenzas";
@@ -17,6 +18,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <Galeria />
         <About />
         <HairStyling />
         <Trenzas />

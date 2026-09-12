@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { heroBannerUrl } from "@/data/portfolio";
 
 export default function Hero() {
@@ -45,6 +46,17 @@ export default function Hero() {
         >
           MAKEUP ARTIST · HAIR STYLIST · GRANADA
         </motion.p>
+
+        <motion.a
+          href="#galeria"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-crimson px-7 py-3 font-semibold uppercase tracking-wider text-white shadow-lg transition-colors duration-300 hover:bg-crimson-deep"
+        >
+          Ver galería
+          <ArrowRight size={18} />
+        </motion.a>
       </div>
 
       {/* Pie del hero */}

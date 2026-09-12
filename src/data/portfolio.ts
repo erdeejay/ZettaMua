@@ -9,11 +9,12 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { id: "sobre-mi", index: "01", label: "Sobre Mí" },
-  { id: "hair-styling", index: "02", label: "Hair Styling" },
-  { id: "trenzas", index: "03", label: "Trenzas" },
-  { id: "editorial", index: "04", label: "Editorial & Creative" },
-  { id: "contacto", index: "05", label: "Contacto" },
+  { id: "galeria", index: "01", label: "Galería" },
+  { id: "sobre-mi", index: "02", label: "Sobre Mí" },
+  { id: "hair-styling", index: "03", label: "Hair Styling" },
+  { id: "trenzas", index: "04", label: "Trenzas" },
+  { id: "editorial", index: "05", label: "Editorial & Creative" },
+  { id: "contacto", index: "06", label: "Contacto" },
 ];
 
 export type GalleryItem = {

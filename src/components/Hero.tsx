@@ -5,14 +5,14 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between overflow-hidden py-8 sm:min-h-[calc(100svh-4rem)]"
+      className="relative flex min-h-[60svh] flex-col justify-between overflow-hidden py-8 sm:min-h-[calc(100svh-4rem)]"
     >
-      {/* Fondo: banner a pantalla completa */}
-      <div className="absolute inset-0 z-0">
+      {/* Fondo: banner. En móvil se ve entero (contain); desde sm cubre todo. */}
+      <div className="absolute inset-0 z-0 bg-pink-light">
         <img
           src={heroBannerUrl}
           alt="ZETTTA MUA — maquillaje, peluquería y estilismo"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain sm:object-cover"
         />
         {/* Velo muy suave solo en los bordes (arriba/abajo) para los textos.
             El centro queda transparente para que el banner luzca nítido. */}

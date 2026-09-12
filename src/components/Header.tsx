@@ -47,8 +47,8 @@ export default function Header() {
             ZETTTA<span className="text-white">·</span>MUA
           </button>
 
-          {/* Derecha: metadatos */}
-          <span className="tech-label justify-self-end text-right text-crimson">
+          {/* Derecha: metadatos (oculto en móvil para no apretar) */}
+          <span className="tech-label hidden justify-self-end text-right text-crimson sm:inline">
             PORTFOLIO 2026/27
           </span>
         </div>

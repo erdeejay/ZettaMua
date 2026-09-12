@@ -21,7 +21,7 @@ export default function App() {
         <div className="border-b border-crimson/30 bg-pink-light py-6">
           <div className="editorial-container flex justify-center">
             <a
-              href="#galeria"
+              href="#fotos"
               className="inline-flex items-center gap-2 rounded-full bg-crimson px-7 py-3 font-semibold uppercase tracking-wider text-white shadow-lg transition-colors duration-300 hover:bg-crimson-deep"
             >
               Ver galería

@@ -48,7 +48,7 @@ export default function Galeria() {
         <div className="hairline mb-8" />
 
         {/* Filtros por categoría */}
-        <div className="mb-10 flex flex-wrap gap-2">
+        <div id="fotos" className="mb-10 flex scroll-mt-24 flex-wrap gap-2">
           {categories.map((c) => (
             <button
               key={c}
